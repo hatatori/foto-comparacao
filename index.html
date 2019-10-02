@@ -56,6 +56,16 @@
 
 	<script>
 
+		function comp(){
+			a = v1.value
+			b = v2.value
+
+			window.location.href = "#"+a+"#"+b
+
+			im1.src = a
+			im2.src = b
+		}
+
 		x = window.location.href.split("#")
 		
 		a = x[1]
@@ -70,18 +80,21 @@
 		ran.onmousemove=function(e){
 			im2.style.opacity=this.value
 		}
+
 		compara.onclick=function(e){
-			
-			a = v1.value
-			b = v2.value
-
-			window.location.href = "#"+a+"#"+b
-
-			im1.src = a
-			im2.src = b
-
+			comp()
 		}
 
 		im2.style.opacity = ran.value
+		comp()
+
+		v1.onkeyup=function(e){
+			if(e.key == "Enter") comp()
+		}
+
+		v2.onkeyup=function(e){
+			if(e.key == "Enter") comp()
+		}
+		comp()
 
 	</script>
