@@ -1,100 +1,75 @@
-	<!-- https://i.imgur.com/5Ejq2RV.jpg -->
-	<!-- https://i.imgur.com/exi3LBw.jpg -->
+<style>
 
-	<style>
-		body{
-			/*background-color: black;*/
-			text-align: center;
-		}
-		input,button{
-			padding: 5;
-			margin:5;
-			/*color: white;*/
-			background-color: transparent;
-			border: none;
-		}
+	*{
+		padding: 0;
+		margin: 0
+	}
 
-		#fora{
-			width: 100%;
-			height: 100%;
-			position: relative;
-			
-		}
+	body{
+		background-color: black;
+	}
 
-		#fora img{
-			position: absolute;
-			left: 0px;
-			right: 0px;
-			margin: auto;
-			max-width: 100%;
-			max-height: 100%;
-		}
+	.relative{
+		position: relative;
+		/*background-color: red;*/
+		/*padding: 10;*/
+		display: inline-block;
+	}
 
+	.relative div{
+		position: absolute;
+	}
 
-		input[type="range"]{
-			width: 300;
-		}
+	.hi{
+		overflow: hidden;
+		width: 70;
+	}
 
+	button{
+		position: absolute;
+		bottom: 0px;
+		right: 0;
+		padding: 5
+	}
 
-	</style>
+	
+</style>
 
-	<div id="menu">
-		<div>
-		<input id="v1" placeholder="Imagem 1" value="img1.jpg">
-		<input id="v2" placeholder="Imagem 2" value="img2.jpg">
-		<button id="compara">Comparar</button><br>
-		<input id="ran" type="range" min=0 max=1 step=0.01 >
+	<button onclick="chama()">Trocar imagem</button>
+	<div class="centrao">
+	<div class="relative" id="relative">
+		<div class="dentro">
+		<div id="a"><img id="img1" src='a.bmp'></div>
+		<div class="hi" id="b"><img id="img2" src='b.bmp'></div>
 		</div>
 	</div>
-
-	<div id="fora">
-		<img id="im1" src="img1.jpg">
-		<img id="im2" src="img2.jpg">
-	</div>
-	<br><br><br>
-	
+	</div>	
 
 	<script>
 
-		function comp(){
-			a = v1.value
-			b = v2.value
+		function chama(){
+			lk1 = prompt("Imagem 1")
+			lk2 = prompt("Imagem 2")
+
+			if(lk1.length > 0 || lk2.length > 0){
+				atualizar(lk1,lk2)
+			}
+		}
+
+		
+
+		function atualizar(a,b){
+
+			// window.location.href = ""
 
 			window.location.href = "#"+a+"#"+b
 
-			im1.src = a
-			im2.src = b
+			img1.src = window.location.href.split("#")[1]
+			img2.src = window.location.href.split("#")[2]
 		}
 
-		x = window.location.href.split("#")
-		
-		a = x[1]
-		b = x[2]
-
-		if(typeof(a) == 'undefined') a = "img1.jpg"
-		if(typeof(b) == 'undefined') b = "img2.jpg"
-
-		v1.value = a
-		v2.value = b
-
-		ran.onmousemove=function(e){
-			im2.style.opacity=this.value
+		relative.onmousemove=function(e){
+			x = e.offsetX
+			b.style.width = x
 		}
-
-		compara.onclick=function(e){
-			comp()
-		}
-
-		im2.style.opacity = ran.value
-		comp()
-
-		v1.onkeyup=function(e){
-			if(e.key == "Enter") comp()
-		}
-
-		v2.onkeyup=function(e){
-			if(e.key == "Enter") comp()
-		}
-		comp()
-
 	</script>
