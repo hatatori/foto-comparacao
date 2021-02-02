@@ -40,32 +40,32 @@
 	
 </style>
 
-	<button onclick="chama()">Trocar imagem</button>
+<button onclick="chama()">Trocar imagem</button>
 
-	<button id="bt2" onclick="size()">Size</button>
-	
-	<div class="centrao">
+<button id="bt2" onclick="size()">Size</button>
+
+<div class="centrao">
 	<div class="relative" id="relative">
 		<div class="dentro">
-		<div id="a"><img id="img1" src='a.bmp'></div>
-		<div class="hi" id="b"><img id="img2" src='b.bmp'></div>
+			<div id="a"><img id="img1" src='a.bmp'></div>
+			<div class="hi" id="b"><img id="img2" src='b.bmp'></div>
 		</div>
 	</div>
-	</div>	
+</div>	
 
-	<script>
+<script>
 
-		function size(){
-			
-			tamanho_h = parseInt(prompt("Digite o tamanho da imagem em height px"))
+	function size(){
 
-			img1.style.height = tamanho_h
-			img2.style.height = tamanho_h
-		}
+		tamanho_h = parseInt(prompt("Digite o tamanho da imagem em height px"))
 
-		function chama(){
-			lk1 = prompt("Imagem 1")
-			lk2 = prompt("Imagem 2")
+		img1.style.height = tamanho_h
+		img2.style.height = tamanho_h
+	}
+
+	function chama(){
+		lk1 = prompt("Imagem 1")
+		lk2 = prompt("Imagem 2")
 
 			// lk1 = "https://th.bing.com/th/id/OIP.-5xzDeWXnBMuGPxgG7SW8wHaLH?pid=Api&rs=1"
 
@@ -76,7 +76,9 @@
 			}
 		}
 
-		
+
+		img1.src = window.location.href.split("#")[1]
+		img2.src = window.location.href.split("#")[2]		
 
 		function atualizar(a,b){
 
